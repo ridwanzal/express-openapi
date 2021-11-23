@@ -1,8 +1,14 @@
+/**
+ * Define model below defeinitions object
+ * if you have table in your relational database, put the attribute here
+ * for eg: Todo, Users
+ */
+
 const apiDoc = {
   swagger: "2.0",
   basePath: "/",
   info: {
-    title: "Todo app API.",
+    title: "M2 API docs",
     version: "1.0.0",
   },
   definitions: {
@@ -18,6 +24,20 @@ const apiDoc = {
       },
       required: ["id", "message"],
     },
+    User: {
+      type: "object",
+      properties:  {
+        id: {
+          type: "number"
+        },
+        name : {
+          type: "string"
+        },
+        gender : {
+          type: "string"
+        }
+      }
+    }
   },
   paths: {},
 };

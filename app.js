@@ -4,7 +4,6 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var { initialize } = require("express-openapi");
 var swaggerUi = require("swagger-ui-express");
-
 var app = express();
 
 app.listen(3030);
