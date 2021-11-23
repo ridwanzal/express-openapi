@@ -1,4 +1,4 @@
-const db = require('../../config/database');
+const db = require('../../../config/database');
 const table = 'rexpo_account'
 module.exports = function () {
     let operations = {
@@ -32,8 +32,21 @@ module.exports = function () {
     }
   
     function POST(req, res, next) {
-      console.log(`About to create todo: ${JSON.stringify(req.body)}`);
-      res.status(201).send();
+      let email = req.body.email;
+      let nama = req.body.nama;
+      let password = req.body.password;
+      let account_type = req.body.account_type;
+      let date_created = 
+      let query = `INSERT INTO rexpo_account (email, nama, password, phone, account_type, date_created, date_updated, time_created,time_updated) 
+                   VALUES('zbinaridwan@gmail.com','M. Ridwan Zalbina', '25d55ad283aa400af464c76d713c07ad', '081919992000', 'peserta', '2021-06-18','2021-06-18','14:09:08','14:09:08')`;
+      db.query(query, function(error, rows, field){
+        if(error){
+          console.log(error);
+          res.status(400).json({error: 'Request failed'})
+        }else{
+          res.status(200).json(rows);
+        }
+      });
     }
   
     function PUT(req, res, next) {
@@ -66,15 +79,6 @@ module.exports = function () {
       summary: "Create account.",
       operationId: "createAccount",
       consumes: ["application/json"],
-      parameters: [
-        {
-          in: "body",
-          name: "todo",
-          schema: {
-            $ref: "#/definitions/Account",
-          },
-        },
-      ],
       responses: {
         201: {
           description: "Created",

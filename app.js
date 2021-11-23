@@ -19,6 +19,21 @@ initialize({
   paths: "./api/paths",
 });
 
+// Not found routes
+app.get('/', function(req, res){
+  res.send({
+    'status' : 400,
+    'message' : 'Invalid Request'
+  }, 404);
+});
+
+// Default routes
+app.use((err, req, res, next) => {
+  if (err.name === 'UnauthorizedError') {
+    res.status(500).send(err.message);
+  }
+});
+
 // OpenAPI UI
 app.use(
   "/api-documentation",
