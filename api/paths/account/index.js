@@ -1,3 +1,5 @@
+const db = require('../../config/database');
+const table = 'rexpo_account'
 module.exports = function () {
     let operations = {
       GET,
@@ -7,10 +9,26 @@ module.exports = function () {
     };
   
     function GET(req, res, next) {
-      res.status(200).json([
-        { id: 0, message: "First User" },
-        { id: 1, message: "Second User" },
-      ]);
+      let query = `SELECT id, 
+                  id_card, 
+                  id_card_type, 
+                  email, 
+                  username, 
+                  nama, 
+                  phone, 
+                  tanggal_lahir, 
+                  tempat_lahir, 
+                  account_type, 
+                  namafile,
+                   pendidikan FROM `+table+``;
+      db.query(query, function(error, rows, fields){
+        if(error){
+          console.log(error);
+          res.status(400).json({error: 'Request failed'})
+        }else{
+          res.status(200).json(rows);
+        }
+      });
     }
   
     function POST(req, res, next) {
@@ -29,15 +47,15 @@ module.exports = function () {
     }
   
     GET.apiDoc = {
-      summary: "Fetch users.",
-      operationId: "getTodos",
+      summary: "Fetch account.",
+      operationId: "getAccount",
       responses: {
         200: {
-          description: "List of todos.",
+          description: "List of account.",
           schema: {
             type: "array",
             items: {
-              $ref: "#/definitions/Todo",
+              $ref: "#/definitions/Account",
             },
           },
         },
@@ -45,15 +63,15 @@ module.exports = function () {
     };
   
     POST.apiDoc = {
-      summary: "Create users.",
-      operationId: "createTodo",
+      summary: "Create account.",
+      operationId: "createAccount",
       consumes: ["application/json"],
       parameters: [
         {
           in: "body",
           name: "todo",
           schema: {
-            $ref: "#/definitions/Todo",
+            $ref: "#/definitions/Account",
           },
         },
       ],
@@ -65,8 +83,8 @@ module.exports = function () {
     };
   
     PUT.apiDoc = {
-      summary: "Update users.",
-      operationId: "updateTodo",
+      summary: "Update account.",
+      operationId: "updateAccount",
       parameters: [
         {
           in: "query",
@@ -78,7 +96,7 @@ module.exports = function () {
           in: "body",
           name: "todo",
           schema: {
-            $ref: "#/definitions/Todo",
+            $ref: "#/definitions/Account",
           },
         },
       ],
@@ -90,8 +108,8 @@ module.exports = function () {
     };
   
     DELETE.apiDoc = {
-      summary: "Delete users.",
-      operationId: "deleteTodo",
+      summary: "Delete account.",
+      operationId: "deleteAccount",
       consumes: ["application/json"],
       parameters: [
         {
