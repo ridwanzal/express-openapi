@@ -1,11 +1,12 @@
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
-var { initialize } = require("express-openapi");
-var swaggerUi = require("swagger-ui-express");
-var app = express();
-
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const { initialize } = require("express-openapi");
+const swaggerUi = require("swagger-ui-express");
+const app = express();
+const dotenv = require('dotenv');
+dotenv.config();
 app.listen(3030);
 app.use(logger("dev"));
 app.use(express.json());
