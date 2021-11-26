@@ -51,7 +51,7 @@ module.exports = function () {
         if(error){
           res.status(400).json(date_created)
         }else{
-          res.status(200).json(rows);
+          res.status(201).json({message: 'Account created'});
         }
       });
     }
@@ -94,22 +94,14 @@ module.exports = function () {
 
     function PATCH(req, res, next) {
       let id = req.body.id;
-      let email = req.body.email;
       let nama = req.body.nama;
-      let password = req.body.password;
-      let phone = req.body.phone;
-      let account_type = req.body.account_type;
       let date_created = dayjs().format('YYYY-MM-DD');
       let date_updated = dayjs().format('YYYY-MM-DD');
       let time_created = dayjs().format('HH:mm:ss');
       let time_updated = dayjs().format('HH:mm:ss');
       let query = `UPDATE `+table+` 
                   SET 
-                  email='`+email+`',
                   nama='`+nama+`',
-                  password='`+password+`',
-                  phone='`+phone+`',
-                  account_type='`+account_type+`',
                   date_created='`+date_created+`',
                   date_updated='`+date_updated+`',
                   time_created='`+time_created+`',
@@ -179,7 +171,7 @@ module.exports = function () {
                 type: "string"
               },
               phone: {
-                type: "number"
+                type: "string"
               },
               account_type: {
                 type: "string"
@@ -210,7 +202,7 @@ module.exports = function () {
             type : "object",
             properties: {
               id: {
-                type: "number"
+                type: "string"
               },
               email: {
                 type: "string"
@@ -222,13 +214,13 @@ module.exports = function () {
                 type: "string"
               },
               phone: {
-                type: "number"
+                type: "string"
               },
               account_type: {
                 type: "string"
               }
             },
-            required : ["email", "nama", "password", "phone","account_type"]
+            required : ["id", "email", "nama", "password", "phone","account_type"]
           }
         }
       ],
@@ -253,25 +245,13 @@ module.exports = function () {
             type : "object",
             properties: {
               id: {
-                type: "number"
-              },
-              email: {
                 type: "string"
               },
               nama: {
                 type: "string"
-              },
-              password: {
-                type: "string"
-              },
-              phone: {
-                type: "number"
-              },
-              account_type: {
-                type: "string"
               }
             },
-            required : ["email", "nama", "password", "phone","account_type"]
+            required : ["id", "nama"]
           }
         }
       ],
