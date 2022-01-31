@@ -20,6 +20,5 @@ Thanks to its OpenAPI compliance, the app auto-generates the documenation of the
 
 Available in <http://localhost:3030/api-documentation>, while the app is running.
 
-![doc-image](./doc-image.png)
-
 ## License
+MIT-License
