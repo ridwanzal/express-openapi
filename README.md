@@ -1,6 +1,7 @@
-# Express Open api with Swagger OPEN APIv2 Documentation
+# Express with Open APIv2 (Swagger)
 
-Code for the article: <https://www.freecodecamp.org/news/how-to-build-explicit-apis-with-openapi/>
+Code for the article: 
+<https://www.freecodecamp.org/news/how-to-build-explicit-apis-with-openapi/>
 
 This codebase shows how to build an [OpenAPI](https://www.openapis.org/)-backed [express](https://expressjs.com/) application.
 
