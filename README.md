@@ -1,4 +1,4 @@
-# M2 API with Swagger OPEN APIv2 Documentation
+# Express Open api with Swagger OPEN APIv2 Documentation
 
 Code for the article: <https://www.freecodecamp.org/news/how-to-build-explicit-apis-with-openapi/>
 
