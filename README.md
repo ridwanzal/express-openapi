@@ -4,7 +4,7 @@ Code for the article: <https://www.freecodecamp.org/news/how-to-build-explicit-a
 
 This codebase shows how to build an [OpenAPI](https://www.openapis.org/)-backed [express](https://expressjs.com/) application.
 
-## How to run
+## How to
 
 ```bash
 # Install dependencies
