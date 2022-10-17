@@ -1,5 +1,5 @@
 /**
- * Define model below defeinitions object
+ * Define model below definition object
  * if you have table in your relational database, put the attribute here
  * for eg: Todo, Users
  */
